@@ -47,6 +47,10 @@ app.use(express.static(publicRoot));
 app.get('/api/health', (_req, res) => {
   res.json({ ok: true, service: 'learntrack-api', time: new Date().toISOString() });
 });
+// Redirect root URL to landing page
+app.get('/', (req, res) => {
+  res.redirect('/landing.html');
+});
 
 app.use('/api', authRouter);
 app.use('/api/courses', coursesRouter);
